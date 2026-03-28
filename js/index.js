@@ -1,46 +1,12 @@
-document.addEventListener('DOMContentLoaded', () => {
+function actualizarFecha() {
+    const contenedor = document.getElementById('fecha-banner');
+    if (!contenedor) return;
+
+    const fecha = new Date();
+    const opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    let texto = fecha.toLocaleDateString('es-ES', opciones);
     
-    const actualizarFecha = () => {
-        const elementoFecha = document.getElementById('fecha-actualizacion');
-        if (elementoFecha) {
-            const ahora = new Date();
-            const opciones = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
-            elementoFecha.textContent = `Actualizado el: ${ahora.toLocaleDateString('es-ES', opciones)}`;
-        }
-    };
+    contenedor.innerHTML = `Actualizado el: ${texto.charAt(0).toUpperCase() + texto.slice(1)}`;
+}
 
-    const configurarReinicios = () => {
-        const ids = ['btn-actualizar', 'reinicio-nombre', 'reinicio-logo'];
-        ids.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) {
-                el.addEventListener('click', () => window.location.reload());
-            }
-        });
-    };
-
-    const configurarTooltip = () => {
-        const tooltip = document.getElementById('tooltip-personalizado');
-        const elementosConTooltip = document.querySelectorAll('[data-tooltip]');
-
-        elementosConTooltip.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                tooltip.textContent = el.getAttribute('data-tooltip');
-                tooltip.style.opacity = '1';
-            });
-
-            el.addEventListener('mousemove', (e) => {
-                tooltip.style.left = (e.clientX + 15) + 'px';
-                tooltip.style.top = (e.clientY + 15) + 'px';
-            });
-
-            el.addEventListener('mouseleave', () => {
-                tooltip.style.opacity = '0';
-            });
-        });
-    };
-
-    actualizarFecha();
-    configurarReinicios();
-    configurarTooltip();
-});
+document.addEventListener('DOMContentLoaded', actualizarFecha);

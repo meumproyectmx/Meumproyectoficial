@@ -5,73 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MeumProyect - Tu Idea, Tu Proyecto</title>
     
-    <link rel="stylesheet" href="css/index.css">
     <link rel="icon" href="Icons/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <header class="header-fijo">
-        <div class="banner">
-            <div class="banner-derecha">
-                <p id="fecha-actualizacion">Cargando fecha...</p>
-            </div>
-        </div>
-
-        <div class="header-content">
-            <div class="identidad-info" id="reinicio-nombre" data-tooltip="Ir a Inicio">
-                <h1 class="identidad-name">MeumProyect</h1>
-                <p class="identidad-slogan">"Tu Idea, Tu Proyecto"</p>
-            </div>
-
-            <div class="nav-social-block">
-                <div class="redes-sociales">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-messenger"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+    <div class="master-grid">
+        <header class="header-area">
+            <div class="banner-fecha" id="fecha-banner"></div>
+            
+            <div class="nav-container">
+                <div class="brand-section">
+                    <h1 class="main-title">MeumProyect</h1>
+                    <p class="slogan">"Tu Idea, Tu Proyecto"</p>
                 </div>
-                <nav class="menu-principal">
-                    <ul>
+                
+                <nav class="main-nav">
+                    <div class="social-icons">
+                        <i class="fa-brands fa-facebook"></i>
+                        <i class="fa-brands fa-facebook-messenger"></i>
+                        <i class="fa-brands fa-youtube"></i>
+                    </div>
+                    <ul class="nav-links">
                         <li><a href="#">Nosotros</a></li>
                         <li><a href="#">Servicios</a></li>
                         <li><a href="#">Contacto</a></li>
-                        <li><a href="#" data-tooltip="Nuevo Cliente">Registro</a></li>
-                        <li class="icono-menu-ws"><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+                        <li><a href="#">Registro</a></li>
+                        <li class="wa-icon"><i class="fa-brands fa-whatsapp"></i></li>
                     </ul>
                 </nav>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <main class="contenedor-principal">
-        <div class="bloque-central">
-            <div class="logo-principal" id="reinicio-logo" data-tooltip="Ir a Inicio">
-                <img src="logos/logomeumproyectpromo.png" alt="Logo MeumProyect" class="Logomeumproyect">
+        <main class="main-content">
+            <div class="welcome-container">
+                <img src="logos/logompinst.png" alt="Logo MeumProyect" class="promo-logo">
+                <h2 class="welcome-text">Bienvenido a MeumProyect</h2>
+                <p class="enjoy-text">Disfrute su visita.</p>
             </div>
+        </main>
 
-            <h2 class="titulo-bienvenida">Bienvenido a MeumProyect</h2>
-
-            <div class="fila-botones">
-                <button class="btn-morado" id="btn-actualizar" data-tooltip="Actualiza página actual">Actualizar</button>
-                <p class="frase-visita">Disfrute su visita.</p>
-                <button class="btn-morado" data-tooltip="Clientes Registrados">Clientes</button>
-            </div>
-        </div>
-    </main>
-
-    <footer class="footer-fijo">
-        <nav class="menu-footer">
-            <ul>
-                <li><a href="#">Identidad</a></li>
-                <li><a href="#">Privacidad</a></li>
-                <li><a href="#">Legal</a></li>
-            </ul>
-        </nav>
-        <p class="copyright">© 2026 MeumProyect. Todos los derechos reservados.</p>
-    </footer>
-
-    <div id="tooltip-personalizado"></div>
+        <footer class="footer-area">
+            <nav class="footer-nav">
+                <a href="#">Identidad</a>
+                <a href="#">Privacidad</a>
+                <a href="#">Legal</a>
+            </nav>
+            <p class="copyright">&copy; 2026 MeumProyect. Todos los derechos reservados.</p>
+        </footer>
+    </div>
 
     <script src="js/index.js"></script>
+
 </body>
 </html>

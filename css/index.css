@@ -1,279 +1,153 @@
-/* --- 1. CONFIGURACIÓN BASE Y VARIABLES --- */
 :root {
-    --morado-oscuro: #1a022d;
-    --morado-neon: #bc13fe; 
-    --morado-brillante: #d670ff; 
-    --morado-transparente: rgba(26, 2, 45, 0.5); 
+    --color-purpura-oscuro: #0a0014;
+    --color-purpura-base: #120026;
+    --color-blanco: #ffffff;
+    --fuente-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --size-menu: 1.0rem;
 }
 
-html, body {
-    height: 100%;
+* {
     margin: 0;
-    background-color: #000000;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #000;
+    font-family: var(--fuente-base);
+    color: var(--color-blanco);
+    /* Quitamos el overflow hidden que causó el error */
+}
+
+.master-grid {
+    display: grid;
+    grid-template-areas: 
+        "header"
+        "main"
+        "footer";
+    grid-template-rows: auto 1fr auto;
+    width: 100%;
+    min-height: 100vh; /* Cambiamos height por min-height para que no corte nada */
+    
+    background: 
+        radial-gradient(circle at center, var(--color-purpura-base) 0%, var(--color-purpura-oscuro) 75%, #000 100%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.25'/%3E%3C/svg%3E");
+    background-blend-mode: overlay;
+    background-attachment: fixed;
+}
+
+.header-area {
+    grid-area: header;
+    background-color: rgba(0, 0, 0, 0.65);
+    padding: 0.4rem 4%; /* Reducción de espacio vertical */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.banner-fecha {
+    text-align: right;
+    font-size: 0.75rem; /* Un poco más pequeño para ganar espacio */
+    margin-bottom: 0.2rem;
+    opacity: 0.8;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-title {
+    font-size: 2.25rem; /* Ajustado ligeramente */
+    line-height: 1;
+}
+
+.slogan {
+    font-style: italic;
+    font-size: 0.9rem;
+    padding-left: 5.2rem;
+    opacity: 0.7;
+}
+
+.main-nav {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    color: #ffffff;
-    overflow-x: hidden;
+    align-items: flex-end;
+    gap: 0.3rem; /* Espacio mínimo */
 }
 
-/* --- 2. ANIMACIONES --- */
-@keyframes revelacionFluida {
-    0% { opacity: 0; filter: blur(12px); }
-    100% { opacity: 1; filter: blur(0); }
-}
-
-/* --- 3. BANNER Y HEADER --- */
-.header-fijo { 
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    z-index: 1000;
-    border-bottom: 1px solid rgb(90, 0, 126);
-}
-
-.banner { 
-    background: linear-gradient(to bottom, var(--morado-oscuro), var(--morado-transparente)); 
-    height: 25px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: flex-end; 
-    padding: 0 5%; 
-}
-
-.banner-derecha { 
-    opacity: 0; 
-    animation: revelacionFluida 5s ease-in-out forwards; 
-    animation-delay: 1.5s; 
-    font-size: 0.70rem; 
-    color: rgba(225, 190, 231, 0.7); 
-}
-
-.header-content { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 0 5%; 
-    background-color: var(--morado-transparente); 
-    min-height: 80px; 
-    backdrop-filter: blur(5px); 
-}
-
-/* --- 4. IDENTIDAD --- */
-.identidad-info { 
-    display: flex; 
-    flex-direction: column; 
-    margin-top: -10px; 
-    opacity: 0; 
-    animation: revelacionFluida 5s ease-in-out forwards; 
-    animation-delay: 0.2s; 
-    cursor: pointer; 
-}
-
-.identidad-name { 
-    font-weight: bold; 
-    font-size: 2.5rem; 
-    color: #ffffff; 
-    line-height: 1.1; 
-    margin: 0; 
-    letter-spacing: 2px; 
-    transition: 0.4s ease-in-out;
-}
-
-.identidad-name:hover {
-    text-shadow: 0 0 10px var(--morado-brillante), 0 0 30px var(--morado-neon);
-}
-
-.identidad-slogan { 
-    font-size: 1.1rem; 
-    font-style: italic; 
-    color: #e1bee7; 
-    margin-top: 8px; 
-    padding-left: 8rem; 
-    letter-spacing: 1.5px; 
-}
-
-/* --- 5. NAVEGACIÓN Y REDES --- */
-.nav-social-block { 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: flex-end; 
-    gap: 20px; /* Espacio vertical solicitado */
-    opacity: 0; 
-    animation: revelacionFluida 5s ease-in-out forwards; 
-    animation-delay: 4.5s; 
-}
-
-.menu-principal ul { 
-    list-style: none; 
-    padding: 0; 
-    margin: 0; 
-    display: flex; 
-    align-items: center; 
-}
-
-.menu-principal ul li { margin-left: 25px; }
-
-.menu-principal ul li a { 
-    text-decoration: none; 
-    color: #ffffff; 
-    font-weight: 600; 
-    transition: 0.3s;
-}
-
-.redes-sociales {
+.social-icons {
     display: flex;
-    gap: 20px;
+    gap: 1.2rem;
+    font-size: 1.2rem;
 }
 
-.redes-sociales a { 
-    color: #ffffff; 
-    font-size: 1.4rem; 
-    text-decoration: none; 
-    transition: 0.3s;
-}
-
-.menu-principal ul li a:hover, .redes-sociales a:hover {
-    color: var(--morado-brillante);
-    text-shadow: 0 0 10px var(--morado-neon);
-}
-
-/* --- 6. CUERPO CENTRAL --- */
-.contenedor-principal { 
-    padding-top: 50px; 
-    flex: 1; 
-    display: flex; 
-    flex-direction: column; 
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
     align-items: center;
+}
+
+.nav-links a {
+    color: var(--color-blanco);
+    text-decoration: none;
+    font-size: var(--size-menu);
+}
+
+.wa-icon {
+    font-size: 1.2rem;
+}
+
+.main-content {
+    grid-area: main;
+    display: flex;
     justify-content: center;
-    background: linear-gradient(to bottom right, var(--morado-transparente), #0d0018); 
+    align-items: center;
+    padding: 1rem;
 }
 
-.bloque-central { 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    width: 100%; 
+.welcome-container {
+    text-align: center;
+    width: 100%;
 }
 
-.logo-principal { 
-    margin-bottom: 1.5rem; 
-    opacity: 0; 
-    animation: revelacionFluida 5s ease-in-out forwards; 
-    animation-delay: 3s; 
-    cursor: pointer; 
+.promo-logo {
+    width: 200px; /* Reducimos el logo para que el texto suba */
+    height: auto;
+    margin-bottom: 1.25rem;
 }
 
-.logo-principal img { 
-    max-width: 150px; 
-    height: auto; 
-    transition: 0.5s ease-in-out;
+.welcome-text {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
 }
 
-.logo-principal img:hover {
-    filter: drop-shadow(0 0 15px var(--morado-neon));
+.enjoy-text {
+    font-size: 1.25rem;
+    opacity: 0.9;
 }
 
-.titulo-bienvenida { 
-    margin: 5px 0 20px 0; 
-    font-size: 1.25rem; 
-    text-align: center; 
-    opacity: 0; 
-    animation: revelacionFluida 5s ease-in-out forwards; 
-    animation-delay: 3.5s; 
+.footer-area {
+    grid-area: footer;
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 0.8rem; /* Compactado */
+    text-align: center;
 }
 
-/* --- 7. BOTONES Y FRASES --- */
-.fila-botones { 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    gap: 40px; 
-    opacity: 0; 
-    animation: revelacionFluida 5s ease-in-out forwards; 
-    animation-delay: 5s; 
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-bottom: 0.4rem;
 }
 
-.frase-visita { 
-    font-size: 1rem; 
-    font-weight: bold; 
-    color: #e1bee7; 
+.footer-nav a {
+    color: var(--color-blanco);
+    text-decoration: none;
+    font-size: var(--size-menu);
 }
 
-.btn-morado {
-    background-color: transparent;
-    color: #ffffff;
-    border: 2px solid var(--morado-neon);
-    padding: 5px 20px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: 0.4s ease-in-out;
-}
-
-.btn-morado:hover {
-    box-shadow: 0 0 15px var(--morado-neon);
-}
-
-/* --- 8. FOOTER --- */
-.footer-fijo { 
-    background-color: var(--morado-oscuro); 
-    padding: 15px 0; 
-    text-align: center; 
-    opacity: 0; 
-    animation: revelacionFluida 5s ease-in-out forwards; 
-    animation-delay: 5.5s; 
-}
-
-.menu-footer ul { 
-    list-style: none; 
-    display: flex; 
-    justify-content: center; 
-    padding: 0;
-}
-
-.menu-footer ul li { margin: 0 20px; }
-
-.menu-footer a { 
-    color: #ffffff; 
-    text-decoration: none; 
-    transition: 0.3s;
-}
-
-/* Efecto hover solicitado para el footer */
-.menu-footer a:hover {
-    color: var(--morado-brillante);
-    text-shadow: 0 0 10px var(--morado-neon);
-}
-
-.copyright { 
-    font-size: 0.80rem; 
-    border-top: 1px solid rgba(69, 39, 160, 0.5); 
-    padding-top: 10px; 
-    margin: 10px 15% 0 15%; 
-    color: #e1bee7; 
-}
-
-/* --- 9. TOOLTIP --- */
-#tooltip-personalizado {
-    position: fixed;
-    padding: 5px 10px;
-    background-color: rgba(26, 2, 45, 0.85);
-    color: white;
-    border: 1px solid var(--morado-neon);
-    border-radius: 4px;
-    font-size: 0.75rem;
-    pointer-events: none;
-    z-index: 9999;
-    box-shadow: 0 0 6px var(--morado-neon);
-    white-space: nowrap; 
-    opacity: 0;
-    transition: opacity 0.6s ease-in-out;
+.copyright {
+    font-size: 0.7rem;
+    opacity: 0.5;
 }
